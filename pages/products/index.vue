@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h2>Products</h2>
-    <p>
-      All our products are sourced from quiltiy chises merchs all aound the orld
-    </p>
+    <div class="grid grid-cols-4 gap-5">
+      <div v-for="p in products">
+        <Nuxt-link :to="`/products/${p.id}`">{{ p.title }}</Nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,6 +12,10 @@
 definePageMeta({
   layout: 'products'
 })
+
+
+//fetching data from the API
+const { data:products } = await useFetch('https://fakestoreapi.com/products')
 </script>
 
 <style scoped>
