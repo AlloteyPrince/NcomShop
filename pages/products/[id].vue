@@ -1,11 +1,6 @@
 <template>
   <div>
-    <h2>Product Details for {{ id }}</h2>
-    <p>
-      This product is one of a kind, it is a unique product that is not
-      available in any other store. It is made from high quality materials and
-      is designed to last. You will not find a better product anywhere else.
-    </p>
+   <ProductDetails :product="product"/>
   </div>
 </template>
 
@@ -14,6 +9,19 @@ const { id } = useRoute().params;
 definePageMeta({
   layout: "products",
 });
+
+const uri = 'https://fakestoreapi.com/products/' + id;
+
+//fethching data from the API
+const { data: product } = await useFetch(uri, {
+  key: id});
+
+  if (!product.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Product not found",fatal: true,
+    });
+  }
 </script>
 
 <style scoped>
