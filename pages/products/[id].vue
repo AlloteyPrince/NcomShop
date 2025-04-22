@@ -1,6 +1,10 @@
 <template>
   <div>
-   <ProductDetails :product="product"/>
+    <Head>
+      <Title>Nuxt Dojo | {{ product.title }}</Title>
+      <Meta name="description" :content="product.description" />
+    </Head>
+    <ProductDetails :product="product" />
   </div>
 </template>
 
@@ -10,18 +14,20 @@ definePageMeta({
   layout: "products",
 });
 
-const uri = 'https://fakestoreapi.com/products/' + id;
+const uri = "https://fakestoreapi.com/products/" + id;
 
 //fethching data from the API
 const { data: product } = await useFetch(uri, {
-  key: id});
+  key: id,
+});
 
-  if (!product.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "Product not found",fatal: true,
-    });
-  }
+if (!product.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Product not found",
+    fatal: true,
+  });
+}
 </script>
 
 <style scoped>

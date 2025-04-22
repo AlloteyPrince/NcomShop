@@ -9,23 +9,16 @@ export default defineNuxtConfig({
       title: "Ncomshop",
       meta: [
         { name: "description", content: "Your one stop shop" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
       link: [
-        {
-          rel: "stylesheet",
-          type: "image/x-icon",
+        { rel: "stylesheet",
           href: "https://fonts.googleapis.com/icons?family=Material+Icons",
-        },
+        }
       ],
-      // link: [
-      //   {
-      //     rel: "icon",
-      //     type: "image/x-icon",
-      //     href: "/favicon.ico",
-      //   },
-      // ],
-    },
+      
+    },},
+    runtimeConfig:{
+    currencyKey: process.env.CURRENCY_API_KEY
 
   }
 });

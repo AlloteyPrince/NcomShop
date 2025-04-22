@@ -16,6 +16,16 @@ definePageMeta({
 
 //fetching data from the API
 const { data:products } = await useFetch('https://fakestoreapi.com/products')
+
+useHead({
+  title: 'Ncomshop - Products',
+  meta: [
+    {
+      name: 'description',
+      content: 'Products page'
+    }
+  ]
+})
 </script>
 
 <style scoped>
